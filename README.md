@@ -1,5 +1,17 @@
-##Init: `yarn install`
+### Init:
 
-##Start: `yarn start`
+```sh
+yarn install
+```
 
-##Test: `yarn test`
+### Start:
+
+```sh
+yarn start
+```
+
+### Test:
+
+```sh
+yarn test
+```
