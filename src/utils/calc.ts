@@ -22,6 +22,7 @@ export const calc = ({ expression, action }: CalcType): number => {
         const operator: string | undefined = operators.pop();
         const b: number | undefined = numbers.pop();
         const a: number | undefined = numbers.pop();
+
         if (operator && a && b && action[operator] && action[operator]?.func) {
           const result: number = action[operator].func(a, b);
           numbers.push(result);
@@ -29,6 +30,7 @@ export const calc = ({ expression, action }: CalcType): number => {
           throw new Error("Error calulate");
         }
       }
+
       operators.pop();
     } else if (action[item]) {
       while (
@@ -39,6 +41,7 @@ export const calc = ({ expression, action }: CalcType): number => {
         const operator: string | undefined = operators.pop();
         const b: number | undefined = numbers.pop();
         const a: number | undefined = numbers.pop();
+
         if (operator && a && b && action[operator] && action[operator]?.func) {
           const result: number = action[operator].func(a, b);
           numbers.push(result);
@@ -46,6 +49,7 @@ export const calc = ({ expression, action }: CalcType): number => {
           throw new Error("Error calulate");
         }
       }
+
       operators.push(item);
     }
   }
@@ -54,6 +58,7 @@ export const calc = ({ expression, action }: CalcType): number => {
     const operator: string | undefined = operators.pop();
     const b: number | undefined = numbers.pop();
     const a: number | undefined = numbers.pop();
+
     if (operator && a && b && action[operator] && action[operator]?.func) {
       const result: number = action[operator].func(a, b);
       numbers.push(result);

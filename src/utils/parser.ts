@@ -20,6 +20,7 @@ export const parseExpression = ({
         arrExpression.push(Number(currentNumber));
         currentNumber = "";
       }
+
       arrExpression.push(char);
     }
   }
