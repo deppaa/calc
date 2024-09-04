@@ -18,7 +18,7 @@ describe("calc", () => {
     }).toThrowError("Error calulate");
   });
 
-  test("", () => {
+  test("expression is correct, return rsult", () => {
     const arExp = parseExpression({
       expression: "2+2",
       allowedOperators: ["+"],
@@ -27,5 +27,11 @@ describe("calc", () => {
     const result = calc({ expression: arExp, action });
 
     expect(result).toBe(4);
+  });
+
+  test("expression is correct use unary +/-, return rsult", () => {
+    const result = calc({ expression: [-5, "+", 2], action });
+
+    expect(result).toBe(-3);
   });
 });

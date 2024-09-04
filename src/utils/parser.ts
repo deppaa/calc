@@ -11,11 +11,24 @@ export const parseExpression = ({
   let currentNumber: string = "";
 
   for (const char of expression) {
-    if (!isNaN(Number(char)) || [".", ","].includes(char)) {
+    if (
+      !isNaN(Number(char)) ||
+      [".", ","].includes(char) ||
+      (["+", "-"].includes(char) &&
+        arrExpression.length === 0 &&
+        !currentNumber) ||
+      (["+", "-"].includes(char) &&
+        !currentNumber &&
+        allowedOperators.includes(
+          String(arrExpression[arrExpression.length - 1])
+        ))
+    ) {
       currentNumber += char;
     } else {
-      if (!allowedOperators.includes(char))
+      if (!allowedOperators.includes(char)) {
         throw new Error("This symbol is not supported");
+      }
+
       if (currentNumber) {
         arrExpression.push(Number(currentNumber));
         currentNumber = "";

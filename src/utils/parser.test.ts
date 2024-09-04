@@ -19,4 +19,13 @@ describe("parseExpression", () => {
 
     expect(result).toEqual([2, "+", 3, "*", 5]);
   });
+
+  test("expression use unary +/- is correct, return arExpression", () => {
+    const result = parseExpression({
+      expression: "-5+2+-2*(-4/-6)",
+      allowedOperators: ["+", "-", "*", "/", "(", ")"],
+    });
+
+    expect(result).toEqual([-5, "+", 2, "+", -2, "*", "(", -4, "/", -6, ")"]);
+  });
 });
